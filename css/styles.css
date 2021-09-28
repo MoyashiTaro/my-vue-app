@@ -17,3 +17,8 @@ body {
 .Con input[type="text"]{
     padding: 0.25vw;
 }
+.batsu{
+    font-size: 0.75vw;
+    cursor: pointer;
+    color: red;
+}

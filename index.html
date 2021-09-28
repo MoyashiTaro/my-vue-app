@@ -8,26 +8,17 @@
 </head>
 <body>
     <div id="app" class="Con">
-        <div>
-            <!-- 文字入れてみる -->
-            <!-- <p> hello {{ name }}</p> -->
-            <p> hello {{ name.toUpperCase() }}</p>
-            <p><input type="text" v-model="name"></p>
-        </div>
-        <div>
-            <!-- for文作る -->
             <h1>マイTODO</h1>
             <ul>
-                <li v-for="todo in todos">{{ todo }}</li>
+                <li v-for="(todo, index) in todos">
+                    {{ todo }}
+                    <span @click="delItem(index)" class="batsu">[×]</span>
+                </li>
             </ul>
-            <!-- <form v-on:submit="addItem"> -->
             <form @submit.prevent="addItem">
                 <input type="text" v-model="newItem">
                 <input type="submit" value="Add">
             </form>
-        </div>
-
-
     </div>
 
 

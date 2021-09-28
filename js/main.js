@@ -24,6 +24,11 @@
             addItem: function() {
                 this.todos.push(this.newItem);
                 this.newItem = '';
+            },
+            delItem: function(index) {
+                if (confirm('本当に？')){
+                    this.todos.splice(index, 1);
+                }
             }
         }
     });

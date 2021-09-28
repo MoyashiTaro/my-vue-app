@@ -11,7 +11,11 @@
             <h1>マイTODO</h1>
             <ul>
                 <li v-for="(todo, index) in todos">
-                    {{ todo.tit }}
+                    <input type="checkbox" v-model="todo.done">
+                    <!-- <span v-bind:class="{done: todo.done}"></span> -->
+                    <span :class="{done: todo.done}">
+                        {{ todo.tit }}
+                    </span>
                     <span @click="delItem(index)" class="batsu">[×]</span>
                 </li>
             </ul>

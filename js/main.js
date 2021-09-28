@@ -15,14 +15,27 @@
             newItem:'',
             name: 'amano',
             todos: [
-                'task1',
-                'task2',
-                'task3'
+                {
+                tit: 'task1',
+                done: false
+                },
+                {
+                tit: 'task2',
+                done: false
+                },
+                {
+                tit: 'task3',
+                done: true
+                },
             ]
         },
         methods:{
             addItem: function() {
-                this.todos.push(this.newItem);
+                var item ={
+                    tit: this.newItem,
+                    done: false
+                };
+                this.todos.push(item);
                 this.newItem = '';
             },
             delItem: function(index) {

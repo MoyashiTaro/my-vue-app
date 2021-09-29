@@ -22,6 +22,16 @@
                 },
             ]
         },
+        watch:{
+            todos: {
+                handler: function(){
+                    localStorage.setItem('todos', JSON.stringify(this.todos));
+                    // alert('保存した！');
+                },
+                deep: true
+                // deepwatcherを使う。→要素の中身も変更したら更新かかるようにする
+            }
+        },
         methods:{
             addItem: function() {
                 var item ={
@@ -40,18 +50,11 @@
                 if ( !confirm('終わった？')){
                     return
                 }
-                // this.todos = this.todos.filter(function(todo){
-                //     return !todo.done
-                // });
                 this.todos = this.remaining;
             },
         },
         computed:{
             remaining: function(){
-                // var items = this.todos.filter(function(todo){
-                //     return !todo.done
-                // });
-                // return items.length;
                 return this.todos.filter(function(todo){
                     return !todo.done
                 });

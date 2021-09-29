@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    
+
     var vm = new Vue({
         el: '#app',
         data: {
@@ -35,14 +35,26 @@
                 if (confirm('本当に？')){
                     this.todos.splice(index, 1);
                 }
-            }
+            },
+            allDelete: function() {
+                if ( !confirm('終わった？')){
+                    return
+                }
+                // this.todos = this.todos.filter(function(todo){
+                //     return !todo.done
+                // });
+                this.todos = this.remaining;
+            },
         },
         computed:{
             remaining: function(){
-                var items = this.todos.filter(function(todo){
+                // var items = this.todos.filter(function(todo){
+                //     return !todo.done
+                // });
+                // return items.length;
+                return this.todos.filter(function(todo){
                     return !todo.done
                 });
-                return items.length;
             }
         }
     });

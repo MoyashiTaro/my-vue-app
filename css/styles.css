@@ -34,3 +34,6 @@ body {
     cursor: pointer;
     color: red;
 }
+button{
+    float: right;
+}

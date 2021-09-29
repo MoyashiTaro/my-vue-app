@@ -1,26 +1,39 @@
 (function() {
     'use strict';
 
+    var likeComponent = Vue.extend({
+        props: {
+            message: {
+                type: String,
+                default: 'Like'
+            }
+        },
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: '<button @click="countUp">{{ message }} {{ count }}</button>',
+        methods: {
+            countUp: function () {
+                this.count++;
+                this.$emit('increment');
+            }
+        }
+    });
+
+
 
     var vm = new Vue({
         el: '#app',
+        components: {
+            'like-component': likeComponent
+        },
         data: {
             newItem:'',
             name: 'amano',
-            todos: [
-                // {
-                // tit: 'task1',
-                // done: false
-                // },
-                // {
-                // tit: 'task2',
-                // done: false
-                // },
-                // {
-                // tit: 'task3',
-                // done: true
-                // },
-            ]
+            todos: [],
+            total: 0
         },
         watch:{
             todos: {
@@ -53,6 +66,9 @@
                 }
                 this.todos = this.remaining;
             },
+            incrementTotal: function () {
+                this.total++;
+            }
         },
         computed:{
             remaining: function(){

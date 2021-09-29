@@ -25,6 +25,15 @@
                 <input type="text" v-model="newItem">
                 <input type="submit" value="Add">
             </form>
+            <hr>
+            <hr>
+            <hr>
+            <hr>
+            <p>Total Likes: {{ total }}</p>
+            <like-component message="Like" @increment="incrementTotal"></like-component>
+            <like-component message="Awesome" @increment="incrementTotal"></like-component>
+            <like-component message="Great" @increment="incrementTotal"></like-component>
+            <like-component @increment="incrementTotal"></like-component>
     </div>
 
 

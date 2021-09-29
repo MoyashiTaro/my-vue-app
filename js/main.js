@@ -1,14 +1,7 @@
 (function() {
     'use strict';
 
-
-
-    //
-    // ①vueの特徴
-    // 双方向データバインディング
-    //　データを書き換えればUIにも反映される
-
-
+    
     var vm = new Vue({
         el: '#app',
         data: {
@@ -42,6 +35,14 @@
                 if (confirm('本当に？')){
                     this.todos.splice(index, 1);
                 }
+            }
+        },
+        computed:{
+            remaining: function(){
+                var items = this.todos.filter(function(todo){
+                    return !todo.done
+                });
+                return items.length;
             }
         }
     });

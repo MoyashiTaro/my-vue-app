@@ -9,20 +9,13 @@
 <body>
     <div id="app" class="Con">
             <h1>マイTODO</h1>
+            <p>({{ remaining }}/{{ todos.length }})</p>
             <ul>
                 <li v-for="(todo, index) in todos">
                     <input type="checkbox" v-model="todo.done">
                     <span :class="{done: todo.done}">{{ todo.tit }}</span>
                     <span @click="delItem(index)" class="batsu">[×]</span>
                 </li>
-                <!--
-                    <ul v-if="todos.length" v-for="(todo, index) in todos">
-                        <li v-else></li>
-                    </ul>
-                    これはできない
-                    ⇨v-ifはv-forよりも後に動くため
-                    他のやり方をしないとダメ（ulでif分岐）
-                -->
                 <li v-show="!todos.length">終わり！！！！なんもないよ！</li>
             </ul>
             <form @submit.prevent="addItem">
